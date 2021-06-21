@@ -1,0 +1,39 @@
+
+\Appendix
+
+\section{Daily Calibrations of Quantum Computing Hardware Platforms}
+
+What is calibrated?
+There are multiple aspects of the systems that are affected by the many different calibrations that we run.
+
+Daily Calibrations
+These calibrations run once every day. The devices start this daily calibration at midnight ET, but these calibration jobs will interleave one for one with jobs from external users. This causes the calibration jobs to spread out across several hours, sometimes more than half a day. These calibration jobs can run during reservations as well. They include the following:
+\begin{itemize}
+    \item Single Qubit Calibrations: calibrate the frequency, pulse amplitudes and "DRAG" parameter of each qubit.
+    \item Single Qubit Benchmarking: We measure the T1/T2 coherence times, measurement error rates, and run randomized benchmarking in batches of non-adjacent qubits. 
+    \item Two Qubit Gate Calibrations and Benchmarking: We calibrate the amplitude and phase of each pulse, and run randomized benchmarking in batches of well-separated gates of similar length
+    \item Hourly Calibrations/Monitoring:  These calibrations attempt to run hourly. They are interleaved with jobs from external users and will try to run in as close to 1 hour intervals as possible. They include the following:
+Readout angle of each qubit.
+\end{itemize}
+
+
+
+
+
+
+
+Stability Checks
+This is needed to ensure proper state discrimination.
+We also monitor the system health using a quick test to confirm all single and two qubit gates are working at a basic level. This ensures the proper operation of gates and allows us to automatically close the queue if we notice a serious system failure.
+
+ A calibration job cannot run simultaneously while an external job is running.
+
+How long do these calibration jobs run for?
+for larger devices (7+ qubits) it could take about an hour and a half. The hourly calibrations run for about 2-3 minutes each hour.
+
+Is it possible for calibration jobs to run during a system reservation?
+Yes, calibration jobs can run during reservations. If this does occur, you would notice a slight lag in jobs executing on the device, but these calibration jobs will not take a large amount of time to finish executing.
+
+Is it possible for 2 jobs that were submitted simultaneously to run under different calibrations?
+-Yes, it is possible. In this scenario, the first job would run, and a calibration job would be interleaved between the first job finishing and the second job starting. In this case, the second job would run under these new calibrations.
+
