@@ -20,6 +20,7 @@
 %\usepackage{float}
 %\usepackage[compat=1.1.0]{tikz-feynman}
 %\usepackage{a4wide,amssymb,float}
+\usepackage{float}
 \usepackage{verbatim}
 \usepackage{hyperref}
 \usepackage{multirow}
@@ -52,7 +53,7 @@
 \def\tp{\tilde{p}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\de{\partial}
-\def\a{\alpha}
+% \def\a{\alpha}
 \def\b{\beta}
 \def\g{\gamma}
 \def\G{\Gamma}
@@ -81,7 +82,7 @@
  \def\bea{\begin{eqnarray}}
  \def\eea{\end{eqnarray}}
  % ------- Define Greek Lowercase --------
- \def\a{\alpha}
+%  \def\a{\alpha}
  \def\b{\beta}
  \def\g{\gamma}
  \def\d{\delta}
@@ -109,8 +110,8 @@
 \def\O{\mathcal{O}}
 \def\R{\mathcal{R}}
 \def\W{\mathcal{W}}
-\def\2{\frac{1}{2}}
-\def\4{\frac{1}{4}}
+% \def\2{\frac{1}{2}}
+% \def\4{\frac{1}{4}}
 
 \def\ap{a_+}
 \def\am{a_-}
@@ -230,7 +231,7 @@
 \date{\today}
 
 \begin{abstract}
- The current generation of noisy intermediate scale quantum computing systems now offer a sufficient number of qubits to begin modelling the performance of simple field theory algorithms on these hardware platforms.  To address the problems of errors arising from these noisy qubits there has been a concerted effort to study how the qubit placement of these qubits on the chip impacts 
+ One of the most problematic issues that limits the implementation of applications on today’s Noisy Intermediate Scale Quantum (NISQ) machines are the adverse impacts of qubit errors.  Reliance on standard one and two qubit randomized benchmarking error measurements cannot reliably identify and capture the full impact of these errors.  This is a critical problem because coherent errors may degrade the user application results in an unpredictable manner and may compromise efforts to validate the accuracy of applications implemented on these NISQ quantum processors.  We report here on an in-depth study of this issue using a transverse Ising model Hamiltonian as a sample user application test case.  We demonstrate through a detailed set of measurements how impacts from inter-day and intra-day qubit calibration drift and placement of the quantum circuit on groups of qubits in different physical locations on the processor can lead to coherent and other errors that adversely impact and distort user application results.  This paper also discusses techniques to gain a better understanding of these types of errors and their impact on efforts to validate the accuracy of quantum computations.
 \end{abstract}
 
 \maketitle
@@ -238,33 +239,22 @@
 \import{}{Introduction}
 \import{}{Physics Model}
 \import{}{Methodology}
-%\import{}{Data Analysis}
-%\import{}{Discussion}
-%\import{}{Summary and Conclusions}
-
-%==========================================================%
-%\onecolumn
-%\bibliography{bibliography}
-%\twocolumn
-%==========================================================%
-
-
-
-
-
+\import{}{Data Analysis}
+\import{}{Discussion}
+\import{}{Summary and Conclusions}
 
 %\bibliographystyle{apsrev4-1}
 %\bibliography{refs.bib}
 
 %==========================================================%
 %\onecolumn
-%\bibliography{bibliography}
+\bibliography{bibliography}
 %\bibliography{main.bbl}
 %\twocolumn
 %==========================================================%
 
 
-%\import{}{Appendix.tex}
+\import{}{Appendix.tex}
 
 \end{document}
 

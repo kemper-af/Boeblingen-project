@@ -1,39 +1,36 @@
+\section{Appendix}
+\label{sec:appendix}
+\begin{appendix}
+\section{Randomized  Benchmarking}
+\label{sec:rand_bench}
+Randomized benchmarking (RB) is a scalable method with respect to the number of qubits that is used for characterization of the noise in quantum hardware. A scalable and robust RB protocol was proposed in \cite{Magesan2010}
+where they came up with a single parameter for determining the average error rate. This error rate is used for benchmarking the full set of Clifford gates.  
+% Since then it has been studied extensively \cite{} and recently, RB for qutrits was also proposed in \cite{Morvan2020}.  
+The main principle of RB is the application of a sequence of gates of fixed length, $m$, that are randomly sampled and chosen from a gate set $\mathcal{G}$ such as Clifford group. To reverse the effect of this application a global inversion gate is applied that would take the state to the initial state in the absence of noise. Then a measurement between initial state and the output state is done. This procedure is repeated for different sequence of length and then the average survival probability is calculated~\cite{Helsen2019}. The average sequence fidelity is fit with $A p^m+B$ where $p$ is the decay parameter of the exponential decay and is called the average gate fidelity.
 
-\Appendix
+The average error rate, $r$, can be expressed in terms of average process infidelity as
+\begin{equation}
+% \label{eq:avg process to gate infidelity conversion}
+    r\equiv \frac{d-1}{d}(1-p) 
+    % \label{eq:err_rate}
+\end{equation}
+where d is the dimension of the system and $p$ is the randomized benchmarking decay rate~\cite{Qi2019}. 
+
+
+However, since in standard RB the twirling gate set is applied to the gate of interest only, RB process does not capture the correlated errors between gates and the noise generated on idling qubits. For this reason, CB combined with RC is studied as discussed in the following section. 
+
+\section{Cycle Benchmarking}
+\label{sec:cyclebenchmarking}
+
+
 
 \section{Daily Calibrations of Quantum Computing Hardware Platforms}
 
-What is calibrated?
-There are multiple aspects of the systems that are affected by the many different calibrations that we run.
+The daily calibrations performed by the IBM hardware team affect multiple aspects of the quantum hardware systems. These calibrations are necessary to implement a standard interface of universal gates and consist of single and two-qubit gate calibration and benchmarking processes. 
 
-Daily Calibrations
-These calibrations run once every day. The devices start this daily calibration at midnight ET, but these calibration jobs will interleave one for one with jobs from external users. This causes the calibration jobs to spread out across several hours, sometimes more than half a day. These calibration jobs can run during reservations as well. They include the following:
-\begin{itemize}
-    \item Single Qubit Calibrations: calibrate the frequency, pulse amplitudes and "DRAG" parameter of each qubit.
-    \item Single Qubit Benchmarking: We measure the T1/T2 coherence times, measurement error rates, and run randomized benchmarking in batches of non-adjacent qubits. 
-    \item Two Qubit Gate Calibrations and Benchmarking: We calibrate the amplitude and phase of each pulse, and run randomized benchmarking in batches of well-separated gates of similar length
-    \item Hourly Calibrations/Monitoring:  These calibrations attempt to run hourly. They are interleaved with jobs from external users and will try to run in as close to 1 hour intervals as possible. They include the following:
-Readout angle of each qubit.
-\end{itemize}
+Typically, IBM follows a 24-hour calibration schedule that starts running calibration jobs at midnight ET and will interleave calibration jobs one-for-one with jobs from external users of the devices. The interleaving of the calibration jobs with external jobs can cause the calibration process to exceed several hours, depending on the particular device’s usage. In addition to the calibrations performed daily, there are also minor, hourly calibrations performed to monitor the readout angles and stability of each qubit to ensure proper state discrimination. The health of the system is also monitored constantly using minor tests to confirm that all single and two-qubit gates are working at a basic level. 
 
+For this work, the IBM hardware team agreed to supply our team with a generous 140 hours of dedicated reservation time and to follow a modified calibration schedule. The complete re-calibration consisting of single and two-qubit gate calibration jobs would execute at the beginning of one of our scheduled dedicated reservation times, 4:00 am ET. A second re-calibration consisting of only two-qubit gate calibration jobs would run at 6:00 pm ET, approximately 3 hours into another of our scheduled dedicated reservation times. The calibration jobs take approximately an hour and a half to complete. Our team executed no external jobs on the device during the calibration process, leaving the calibration jobs to run without interference. The calibration and benchmarking processes for single and two-qubit gates result in various parameters and properties essential to understanding how these nascent quantum hardware platforms perform.
 
-
-
-
-
-
-Stability Checks
-This is needed to ensure proper state discrimination.
-We also monitor the system health using a quick test to confirm all single and two qubit gates are working at a basic level. This ensures the proper operation of gates and allows us to automatically close the queue if we notice a serious system failure.
-
- A calibration job cannot run simultaneously while an external job is running.
-
-How long do these calibration jobs run for?
-for larger devices (7+ qubits) it could take about an hour and a half. The hourly calibrations run for about 2-3 minutes each hour.
-
-Is it possible for calibration jobs to run during a system reservation?
-Yes, calibration jobs can run during reservations. If this does occur, you would notice a slight lag in jobs executing on the device, but these calibration jobs will not take a large amount of time to finish executing.
-
-Is it possible for 2 jobs that were submitted simultaneously to run under different calibrations?
--Yes, it is possible. In this scenario, the first job would run, and a calibration job would be interleaved between the first job finishing and the second job starting. In this case, the second job would run under these new calibrations.
-
+The single-qubit calibration process consists of Ramsey and Rabi experiments to measure the frequency and amplitude of each qubit along with calibration of the optimal scaling factor of the DRAG pulse used in single-qubit gates on superconducting hardware. The T1/T2 coherence times and measurement error rates of each qubit are also measured and recorded. Randomized benchmarking of the single-qubit gates is then performed in batches of non-adjacent qubits. The two-qubit calibration process is done similarly, with calibration of the amplitude and phase of each pulse done before performing randomized benchmarking in batches of well-separated gates of similar length to measure the average gate fidelities. Each time the Boeblingen quantum computing hardware platform was re-calibrated and benchmarked, IBM published and made these backend properties available through Qiskit, the open-source quantum software development kit. 
+\end{appendix}
