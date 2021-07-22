@@ -35,6 +35,7 @@
      citecolor    = blue
 }
 \usepackage{lineno}
+\usepackage{ulem}
 % \usepackage[thicklines]{cancel}
 \usepackage{color, colortbl}
 % \definecolor{LightCyan}{rgb}{0.88,1,1}
@@ -47,6 +48,10 @@
 % %
 % \usepackage{lineno}
 \newcommand{\todo}[1]{\textcolor{red}{#1}}    
+
+\newcommand{\LK}[1]{\textcolor{blue}{[Lex: #1]}}
+\newcommand{\KYA}[1]{\textcolor{magenta}{[KYA: #1]}}
+
 % \usepackage{graphicx}
 \def\ho{\tilde{\omega}}
 \def\tio{\hat{\omega}}
@@ -231,7 +236,7 @@
 \date{\today}
 
 \begin{abstract}
- One of the most problematic issues that limits the implementation of applications on today’s Noisy Intermediate Scale Quantum (NISQ) machines are the adverse impacts of qubit errors.  Reliance on standard one and two qubit randomized benchmarking error measurements cannot reliably identify and capture the full impact of these errors.  This is a critical problem because coherent errors may degrade the user application results in an unpredictable manner and may compromise efforts to validate the accuracy of applications implemented on these NISQ quantum processors.  We report here on an in-depth study of this issue using a transverse Ising model Hamiltonian as a sample user application test case.  We demonstrate through a detailed set of measurements how impacts from inter-day and intra-day qubit calibration drift and placement of the quantum circuit on groups of qubits in different physical locations on the processor can lead to coherent and other errors that adversely impact and distort user application results.  This paper also discusses techniques to gain a better understanding of these types of errors and their impact on efforts to validate the accuracy of quantum computations.
+ One of the most problematic issues that limits the implementation of applications on today’s Noisy Intermediate Scale Quantum (NISQ) machines are the adverse impacts of qubit errors.  Reliance on standard one and two qubit randomized benchmarking error measurements cannot reliably identify and capture the full impact of these errors.  This is a critical problem because different types of errors may degrade the user application results in an unpredictable manner and may compromise efforts to validate the accuracy of applications implemented on these NISQ quantum processors.  At the present time the number of qubits on hardware platforms has been sufficiently small that digital computers have always been able to check and verify the accuracy and reliability of the quantum computing results. However, as larger qubit hardware platforms are introduced there will come a point where the computation is beyond the capability of a digital computer to verify these calculations while at the same time the number of qubits will also be insufficient build logical qubits to correct these errors. In the intermediate term future the community will need to identify behaviors of the hardware platforms that may signal qubit instabilities and use techniques that measure the profile and stability of the machine and detect qubit errors without directly using digital computers for verification. We report here on an the results of such an in-depth study using a transverse Ising model Hamiltonian as a sample user application test case.  Through a detailed set of measurements we identify how impacts from inter-day and intra-day qubit calibration drift and placement of the quantum circuit on groups of qubits in different physical locations on the processor can lead to coherent and other errors that adversely impact and distort user application results.  This paper also discusses techniques to gain a better understanding of these types of errors and their impact on efforts to validate the accuracy of quantum computations.
 \end{abstract}
 
 \maketitle

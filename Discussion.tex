@@ -1,2 +1,42 @@
 
 \section{Discussion}
+\label{sec:discussion}
+
+
+
+
+There is sometimes a lack of appreciation that digital hardware performance and software algorithms and methods have evolved together over the past 80 years and together they are both highly optimized while quantum computing technology is in an embryonic form at the present time when compared to today's digital computing systems.  The probability of a transistor hardware error in a digital computer is approximately $10^{-27}$ compared the probability of a qubit error in a quantum computer which is of the order $10^{-3}$ \cite{1028924}.   Quantum computing hardware designers and engineers as well as algorithm and application developers have not had the luxury of 80 years of research and development experience with quantum computing platforms, algorithms and applications. Nevertheless, the temptation for some researchers and developers of computing algorithms and applications is to try and export  successful the digital computing methods and techniques and replicate them on current quantum computing hardware platforms.  The results reported here have documented the shortcomings of such an approach.
+
+It is generally recognized that quantum computers have a higher overall error rate than their digital counterparts.  Because the number of qubits in today's hardware platforms are insufficient to implement error correction dynamically, extensive error mitigation efforts have been directed to reduce the one and two qubit errors on the qubits directly used in these computations. 
+
+Errors that arise from decoherence (such as single qubit T1 measurements in listed in the single qubit error rates table (~\ref{table:Single-qubit-gate-error-layout2-on-1-24-and-1-29} tend to be independent of the specific circuit.  Two qubit gates in circuits run on quantum hardware platforms on the other hand tend to accumulate a more complex set of errors that are influenced by the particular circuit being run, the properties of the particular two qubits directly forming the CNOT gate, other nearby pairs of two qubits in the form of crosstalk, frequency collisions and other effects that all combine to aggregate the total coherent error in a non-trivial manner.  
+
+\textbf{refs for error methods and techniques}
+There are several error mitigation 
+
+Behind all of these error mitigation efforts is the implicit assumption that repeated identical computations using the same circuit implemented on the same set of qubits at different days and times, although not producing a high level of accuracy, will give results that can be aggregated over time because they fall within the same error bar range from one computation to the next.  Results from this work shows that this cannot be implicitly assumed to be the base level of operations when running on a quantum hardware platform.  
+
+For the inter-day measurements, the graphs showing the process infidelity measurements from both the cycle benchmarking and randomized benchmarking procedures for each of the four cycles  (Figure~\ref{fig:processinfidelitiesStory4} clearly shows that the 2 qubit error rates vary over time and that the magnitude of the error rate differs depending on the method used for the calculation.  The under reporting of the magnitude of the errors using randomized benchmarking results from this procedure not taking into account the additional error contributions from impact of other nearby qubits beyond the direct measurement of the two qubits being measured.  These larger error rates can result in final circuit measurements to have larger than expected differences when results from different days are considered.
+
+The analysis of these inter-day measurements also showed many QCAP bound computations and error bars for different days are sometimes displaced from each other with no overlap for the same circuit run on the same set of qubits at the same time of day but on different days (Figure~\ref{fig:QCAP_circ1_circ2_24th_29th_L2_Morning}.  Both the IBM qubit re-calibrations and the process infidelity and QCAP measurements that followed the completion of the qubit re-calibrations were done when the hardware processor was set in dedicated mode.  This configuration insured that the qubits remained as undisturbed as possible from other users running jobs on Boeblingen during the time when the calibration were done and the results from these cycle benchmarking and TIM computations recorded.  It potentially becomes problematic when trying to aggregate data results under these inter-day conditions when the underlying hardware infrastructure exhibits these levels of instability.
+
+The intra-day measurements reported here also show a similar disturbing pattern.  The daily procedure described in Section~\ref{sec:methodology} indicated that the morning block of dedicated time on Boeblingen expired at 10 am each day. Between 10  am and 3 pm the Boeblingen processor was available for use by other users in the general quantum network.  At 3 pm each day dedicated mode was again imposed on Boeblingen and the process infidelity, QCAP and TIM computations were again computed.  At 6 pm IBM re-calibrated all of the 2 qubit gates again and the process infidelity, QCAP bound and TIM calcualtions were again performed.  All of these afternoon and night calculations were done while Boeblingen continued in dedicated mode between the 3 pm - 11 pm time window.
+
+Figures~\ref{fig:processinfidelitiesStory6}, Figure~\ref{fig:processinfidelitiesStory6} and Figure~\ref{fig:QCAPCB_RB_Story6} essentially show an intra-day calibration drift on January 27th between the morning calibration settings and an identical job run again at 3 pm, a full 9 hours after the morning re-calibration and after the processor was open for several hours of general usage.
+
+An identical intra-day set of calculations was performed on January 30th, only this time the comparison was between afternoon measurements taken in dedicated mode at 3pm after the processor had been open for general usage for several hours that day and again in dedicated mode after the IBM night 2 qubit re-calibration .  A comparison of the morning, afternoon and night measurements was then plotted as shown in  Figure~\ref{fig:processinfidelitiesStory7} and Figure~\ref{fig:QCAPCB_RB_Story7}.  In this instance, these graphs indicate that calculations run immediately after the IBM re-calibrations in the morning and night showed over lapping plots of the QCAP bound indicating that a quantum circuit run at these particular time intervals would produce similar results.  However if that user happened to run this identical circuit during that afternoon time window, the circuit performance would have experienced intra-day drift outside the characteristics from what would be measured either in the morning or night on the 30th.
+
+A third 
+
+
+
+
+
+
+that different benchmarking procedures will essentially return different answers for the 2 qubit CNOT error rate.   
+the differences in the error measurements   
+
+
+
+
+  

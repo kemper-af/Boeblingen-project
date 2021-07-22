@@ -1,0 +1,26 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{qcircuit}
+
+\begin{document}
+\begin{equation*}
+\label{eqtfieldevocirc}
+\hat{U}_{1}(\delta t; h_T) = 
+\begin{aligned}
+\Qcircuit @C=-1.3em @R=-0.5cm @! {
+& \gate{R_z(2h_T\delta t)} & \qw\\
+& \gate{R_z(2h_T\delta t)} & \qw\\
+& \gate{R_z(2h_T\delta t)} & \qw\\
+& \gate{R_z(2h_T\delta t)} & \qw\\
+}
+\end{aligned}
+\hat{U}_2(\delta t; J) =  \begin{gathered}\Qcircuit @C=-1.3em @R=-0.5cm @! {
+& \ctrl{1} & \gate{R_x(2J\delta t)} & \ctrl{1} & \qw & \qw & \qw & \qw \\
+& \targ & \qw                    & \targ & \ctrl{1} & \gate{R_x(2J\delta t)} & \ctrl{1} & \qw \\
+& \ctrl{1} & \gate{R_x(2J\delta t)} & \ctrl{1} & \targ & \qw & \targ & \qw \\ 
+& \targ & \qw                    & \targ & \qw & \qw & \qw & \qw \\
+}
+\end{gathered}
+\end{equation*}
+\end{document}

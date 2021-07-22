@@ -6,21 +6,37 @@
 Randomized benchmarking (RB) is a scalable method with respect to the number of qubits that is used for characterization of the noise in quantum hardware. A scalable and robust RB protocol was proposed in \cite{Magesan2010}
 where they came up with a single parameter for determining the average error rate. This error rate is used for benchmarking the full set of Clifford gates.  
 % Since then it has been studied extensively \cite{} and recently, RB for qutrits was also proposed in \cite{Morvan2020}.  
-The main principle of RB is the application of a sequence of gates of fixed length, $m$, that are randomly sampled and chosen from a gate set $\mathcal{G}$ such as Clifford group. To reverse the effect of this application a global inversion gate is applied that would take the state to the initial state in the absence of noise. Then a measurement between initial state and the output state is done. This procedure is repeated for different sequence of length and then the average survival probability is calculated~\cite{Helsen2019}. The average sequence fidelity is fit with $A p^m+B$ where $p$ is the decay parameter of the exponential decay and is called the average gate fidelity.
+The main principle of RB is the application of a sequence of gates of fixed length, $m$, that are randomly sampled and chosen from a gate set $\mathcal{G}$ such as Clifford group. To reverse the effect of this application a global inversion gate is applied that would take the state to the initial state in the absence of noise. Then a measurement between initial state and the output state is done. This procedure is repeated for different sequence of length and then the average survival probability is calculated~\cite{Helsen2019}. The average sequence fidelity is fit with $A p^m+B$ where $p$ is the decay parameter of the exponential decay. 
 
-The average error rate, $r$, can be expressed in terms of average process infidelity as
+The average error rate, $r$, is reported by IBM and in standard RB it is assumed that the noise is gate-independent and $r\approx \epsilon$ where $\epsilon$ is the average gate-set infidelity. The average error rate  can be expressed in terms of RB decay rate $p$ as
 \begin{equation}
 % \label{eq:avg process to gate infidelity conversion}
     r\equiv \frac{d-1}{d}(1-p) 
-    % \label{eq:err_rate}
+    \label{eq:err_rate}
 \end{equation}
-where d is the dimension of the system and $p$ is the randomized benchmarking decay rate~\cite{Qi2019}. 
+where d is the dimension of the system
+% and $p$ is the randomized benchmarking decay rate
+\cite{Qi2019}. 
 
 
 However, since in standard RB the twirling gate set is applied to the gate of interest only, RB process does not capture the correlated errors between gates and the noise generated on idling qubits. For this reason, CB combined with RC is studied as discussed in the following section. 
 
+In this paper, we report the process infidelity, $e_F$, as a measure of infidelity for coherent errors therefore, for completeness we convert average gate set fidelity, $r$, to the process infidelity, $e_F$ using
+\begin{equation}
+    e_F=r \frac{d+1}{d}
+    \label{eq:error_to_proc_infid}
+\end{equation} 
+from~\cite{NIELSEN2002249}.
+
 \section{Cycle Benchmarking}
 \label{sec:cyclebenchmarking}
+Cycle benchmarking (CB) is another noise characterization technique that can characterize local and global errors across multi-qubit quantum processors~\cite{Erhard2019}. CB is similar to RB but instead of reversing the effect of overall random gates at the end of the procedure the operations in the quantum circuit are separated as easy and hard cycles and each twirling gate is inverted for each hard cycle. Therefore, CB helps keep track of each twirling gate and makes the process scalable with the number of qubits~\cite{ville2021leveraging}.   
+
+The CB protocol can be summarized as follows. The cycle of interest is chosen where a cycle is a parallel set of gates. These cycles can be on single-qubit, parallel multi-qubit and/or idling qubits. Then this cycle is alternated with random Pauli gates (dressed cycle) which are accompanied with random measurement basis. Then the process infidelity ($e_F$), i.e. the total probability of error of the dressed cycle, is calculated from the average of the decay rate.    
+
+
+% \section{Quantum Capacity (QCAP)}
+% \label{sec:QCAP}
 
 
 
